@@ -24,6 +24,11 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compileOnly(files("libs/wizard-template.jar"))
+}
+
+
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
 intellij {
     pluginName.set(properties("pluginName"))

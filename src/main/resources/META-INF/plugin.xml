@@ -1,9 +1,16 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.moodstrikerdd.bosshitemplate</id>
-    <name>BossHiTemplate</name>
-    <vendor>moodstrikerdd</vendor>
+    <id>com.twl.bosshimvvm</id>
+    <name>Boss Hi MVVM</name>
+    <vendor url=""></vendor>
 
+    <description>一键创建 Boss Hi MVVM 单个页面所需要的全部组件,包括Activity、Fragment、xml、viewModel、callback&lt;br /&gt;</description>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -15,4 +22,9 @@
         <listener class="com.github.moodstrikerdd.bosshitemplate.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="other.ArmsPluginTemplateProviderImpl" />
+    </extensions>
+
 </idea-plugin>
