@@ -9,7 +9,7 @@ import java.io.File
  * @author Love_xie
  * module name is ArmsPluginTemplateProviderImpl
  */
-class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
+class MVVMPluginTemplateProviderImpl : WizardTemplateProvider() {
     override fun getTemplates(): List<Template> = listOf(armsTemplate)
 
     companion object {
@@ -57,10 +57,13 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
             //创建所需文件
             recipe = { te ->
                 //val (projectData, srcOut, resOut) = te as ModuleTemplateData
-                armsRecipe(this@ArmsPluginTemplateProviderImpl, (te as ModuleTemplateData))
+                armsRecipe(this@MVVMPluginTemplateProviderImpl, (te as ModuleTemplateData))
             }
         }
 
+
+    var applicationName = ""
+    var resourcePrefix = ""
 
     /** 新建页面名称 */
     val pageName = stringParameter {
@@ -89,7 +92,7 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
     val activityLayoutName = stringParameter {
         name = "Activity Layout Name"
         constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-        suggest = { activityToLayout(pageName.value) }
+        suggest = { "${resourcePrefix}${activityToLayout(pageName.value)}" }
         default = "activity_main"
         visible = { needActivity.value }
         help = "Activity 创建之前需要填写 Activity 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
@@ -116,7 +119,7 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
     val fragmentLayoutName = stringParameter {
         name = "Fragment Layout Name"
         constraints = listOf(Constraint.LAYOUT, Constraint.NONEMPTY)
-        suggest = { "fragment_${classToResource(pageName.value)}" }
+        suggest = {  "${resourcePrefix}${fragmentToLayout(pageName.value)}"  }
         default = "fragment_main"
         visible = { needFragment.value }
         help = "Fragment 创建之前需要填写 Fragment 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"
@@ -157,4 +160,5 @@ class ArmsPluginTemplateProviderImpl : WizardTemplateProvider() {
         visible = { needCallback.value }
         help = "Callback 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
     }
+
 }

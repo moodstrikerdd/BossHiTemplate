@@ -5,9 +5,9 @@ import java.util.*
 
 fun commonAnnotation() = """
 /**
- * @author 
+ * @author dingdong
  * @date ${SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date(System.currentTimeMillis()))}
- * description:
+ *     description:
  */
 """.trimIndent()
 

@@ -1,21 +1,32 @@
 package other.src.app_package
 
-import other.ArmsPluginTemplateProviderImpl
+import com.android.tools.idea.wizard.template.ModuleTemplateData
+import other.MVVMPluginTemplateProviderImpl
 import other.commonAnnotation
 import other.layoutToDataBinding
 
-fun mvvmActivity(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+fun mvvmActivity(isKt: Boolean, provider: MVVMPluginTemplateProviderImpl) =
     if (isKt) mvvmActivityKt(provider) else mvvmActivityJava(provider)
 
-private fun mvvmActivityKt(provider: ArmsPluginTemplateProviderImpl) = """
+private fun mvvmActivityKt(provider: MVVMPluginTemplateProviderImpl) = """
 package ${provider.appPackageName.value}
 
 import android.content.Context
 import android.content.Intent
 
+${
+    if (provider.appPackageName.value != provider.applicationName) {
+        """
+import ${provider.applicationName}.BR
+import ${provider.applicationName}.R   
+""".trimIndent()
+    } else {
+        ""
+    }
+}
 import ${provider.callbackPackageName.value}.${provider.pageName.value}ActivityCallback
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}ActivityViewModel
-import ${provider.appPackageName.value}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding
+import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding
 import com.twl.hi.foundation.base.activity.FoundationVMActivity
 
 import lib.twl.common.util.AppUtil
@@ -41,15 +52,25 @@ class ${provider.pageName.value}Activity : FoundationVMActivity<${layoutToDataBi
 
 """
 
-private fun mvvmActivityJava(provider: ArmsPluginTemplateProviderImpl) = """
+private fun mvvmActivityJava(provider: MVVMPluginTemplateProviderImpl) = """
 package ${provider.appPackageName.value};
 
 import android.content.Context;
 import android.content.Intent;
 
+${
+    if (provider.appPackageName.value != provider.applicationName) {
+        """
+import ${provider.applicationName}.BR;
+import ${provider.applicationName}.R;
+""".trimIndent()
+    } else {
+        ""
+    }
+}
 import ${provider.callbackPackageName.value}.${provider.pageName.value}ActivityCallback;
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}ActivityViewModel;
-import ${provider.appPackageName.value}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding;
+import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding;
 import com.twl.hi.foundation.base.activity.FoundationVMActivity;
 
 import lib.twl.common.util.AppUtil;

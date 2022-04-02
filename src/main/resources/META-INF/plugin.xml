@@ -3,18 +3,17 @@
     <name>Boss Hi MVVM</name>
     <vendor url=""></vendor>
 
-    <description>一键创建 Boss Hi MVVM 单个页面所需要的全部组件,包括Activity、Fragment、xml、viewModel、callback&lt;br /&gt;</description>
+    <description><![CDATA[<p>create Activity,Fragment with all files include Activity,Fragment,xml,viewModel,callback</p>]]></description>
 
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
+
     <depends>org.jetbrains.android</depends>
     <depends>org.jetbrains.kotlin</depends>
     <depends>com.intellij.modules.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.moodstrikerdd.bosshitemplate.services.MyApplicationService"/>
+        <applicationService
+                serviceImplementation="com.github.moodstrikerdd.bosshitemplate.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.moodstrikerdd.bosshitemplate.services.MyProjectService"/>
     </extensions>
 
@@ -24,7 +23,7 @@
     </applicationListeners>
 
     <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
-        <wizardTemplateProvider implementation="other.ArmsPluginTemplateProviderImpl" />
+        <wizardTemplateProvider implementation="other.MVVMPluginTemplateProviderImpl"/>
     </extensions>
 
 </idea-plugin>

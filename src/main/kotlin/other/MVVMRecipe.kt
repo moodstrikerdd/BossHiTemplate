@@ -8,7 +8,8 @@ import other.src.app_package.*
 import other.src.armsManifest
 import java.io.File
 
-fun RecipeExecutor.armsRecipe(provider: ArmsPluginTemplateProviderImpl, data: ModuleTemplateData) {
+fun RecipeExecutor.armsRecipe(provider: MVVMPluginTemplateProviderImpl, data: ModuleTemplateData) {
+    provider.applicationName = data.projectTemplateData.applicationPackage ?: data.packageName
 
     if (provider.needActivity.value) {
         mergeXml(armsManifest(provider, data), File(data.manifestDir, "AndroidManifest.xml"))

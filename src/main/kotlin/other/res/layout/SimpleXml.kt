@@ -1,8 +1,8 @@
 package other.res.layout
 
-import other.ArmsPluginTemplateProviderImpl
+import other.MVVMPluginTemplateProviderImpl
 
-fun simpleLayout(provider: ArmsPluginTemplateProviderImpl) = """
+fun simpleLayout(provider: MVVMPluginTemplateProviderImpl) = """
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 

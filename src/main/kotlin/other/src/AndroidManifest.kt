@@ -1,9 +1,9 @@
 package other.src
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
-import other.ArmsPluginTemplateProviderImpl
+import other.MVVMPluginTemplateProviderImpl
 
-fun armsManifest(provider: ArmsPluginTemplateProviderImpl, data: ModuleTemplateData) = """
+fun armsManifest(provider: MVVMPluginTemplateProviderImpl, data: ModuleTemplateData) = """
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application>
     ${

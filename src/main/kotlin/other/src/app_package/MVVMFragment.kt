@@ -1,21 +1,33 @@
 package other.src.app_package
 
-import other.ArmsPluginTemplateProviderImpl
+import other.MVVMPluginTemplateProviderImpl
 import other.commonAnnotation
 import other.layoutToDataBinding
 
-fun mvvmFragment(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+fun mvvmFragment(isKt: Boolean, provider: MVVMPluginTemplateProviderImpl) =
     if (isKt) mvvmFragmentKt(provider) else mvvmFragmentJava(provider)
 
-private fun mvvmFragmentKt(provider: ArmsPluginTemplateProviderImpl) = """
+private fun mvvmFragmentKt(provider: MVVMPluginTemplateProviderImpl) = """
 package ${provider.appPackageName.value}
 
 import android.os.Bundle
 
+${
+    if (provider.appPackageName.value != provider.applicationName) {
+        """
+import ${provider.applicationName}.BR
+import ${provider.applicationName}.R
+""".trimIndent()
+    } else {
+        ""
+    }
+}
 import ${provider.callbackPackageName.value}.${provider.pageName.value}FragmentCallback
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}FragmentViewModel
-import ${provider.appPackageName.value}.databinding.${layoutToDataBinding(provider.fragmentLayoutName.value)}Binding
+import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.fragmentLayoutName.value)}Binding
 import com.twl.hi.foundation.base.fragment.FoundationVMFragment
+
+
 
 ${commonAnnotation()}
 class ${provider.pageName.value}Fragment private constructor() : FoundationVMFragment<${layoutToDataBinding(provider.fragmentLayoutName.value)}Binding, ${provider.pageName.value}FragmentViewModel>(), ${provider.pageName.value}FragmentCallback {
@@ -38,14 +50,24 @@ class ${provider.pageName.value}Fragment private constructor() : FoundationVMFra
 }
 """
 
-private fun mvvmFragmentJava(provider: ArmsPluginTemplateProviderImpl) = """
+private fun mvvmFragmentJava(provider: MVVMPluginTemplateProviderImpl) = """
 package ${provider.appPackageName.value};
 
 import android.os.Bundle;
 
+${
+    if (provider.appPackageName.value != provider.applicationName) {
+        """
+import ${provider.applicationName}.BR;
+import ${provider.applicationName}.R;    
+""".trimIndent()
+    } else {
+        ""
+    }
+}
 import ${provider.callbackPackageName.value}.${provider.pageName.value}FragmentCallback;
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}FragmentViewModel;
-import ${provider.appPackageName.value}.databinding.${layoutToDataBinding(provider.fragmentLayoutName.value)}Binding;
+import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.fragmentLayoutName.value)}Binding;
 import com.twl.hi.foundation.base.fragment.FoundationVMFragment;
 
 ${commonAnnotation()}

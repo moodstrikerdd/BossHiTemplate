@@ -1,13 +1,13 @@
 package other.src.app_package
 
-import other.ArmsPluginTemplateProviderImpl
+import other.MVVMPluginTemplateProviderImpl
 import other.commonAnnotation
 
-fun mvvmViewModel(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+fun mvvmViewModel(isKt: Boolean, provider: MVVMPluginTemplateProviderImpl) =
     if (isKt) mvvmViewModelKt(provider) else mvvmViewModelJava(provider)
 
 
-fun mvvmViewModelKt(provider: ArmsPluginTemplateProviderImpl) = """
+fun mvvmViewModelKt(provider: MVVMPluginTemplateProviderImpl) = """
     package ${provider.viewModelPackageName.value}
 
     import android.app.Application
@@ -20,7 +20,7 @@ fun mvvmViewModelKt(provider: ArmsPluginTemplateProviderImpl) = """
     }
 """.trimIndent()
 
-fun mvvmViewModelJava(provider: ArmsPluginTemplateProviderImpl) = """
+fun mvvmViewModelJava(provider: MVVMPluginTemplateProviderImpl) = """
     package ${provider.viewModelPackageName.value};
 
     import android.app.Application;

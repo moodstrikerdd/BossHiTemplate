@@ -1,12 +1,12 @@
 package other.src.app_package
 
-import other.ArmsPluginTemplateProviderImpl
+import other.MVVMPluginTemplateProviderImpl
 import other.commonAnnotation
 
-fun mvvmCallback(isKt: Boolean, provider: ArmsPluginTemplateProviderImpl) =
+fun mvvmCallback(isKt: Boolean, provider: MVVMPluginTemplateProviderImpl) =
     if (isKt) mvvmCallbackKt(provider) else mvvmCallbackJava(provider)
 
-fun mvvmCallbackKt(provider: ArmsPluginTemplateProviderImpl) = """
+fun mvvmCallbackKt(provider: MVVMPluginTemplateProviderImpl) = """
     package ${provider.callbackPackageName.value}
 
     ${commonAnnotation()}
@@ -15,7 +15,7 @@ fun mvvmCallbackKt(provider: ArmsPluginTemplateProviderImpl) = """
     }
 """.trimIndent()
 
-fun mvvmCallbackJava(provider: ArmsPluginTemplateProviderImpl) = """
+fun mvvmCallbackJava(provider: MVVMPluginTemplateProviderImpl) = """
     package ${provider.callbackPackageName.value};
 
     ${commonAnnotation()}
