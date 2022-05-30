@@ -27,7 +27,7 @@ import ${provider.applicationName}.R
 import ${provider.callbackPackageName.value}.${provider.pageName.value}ActivityCallback
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}ActivityViewModel
 import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding
-import com.twl.hi.foundation.base.activity.FoundationVMActivity
+import com.twl.hi.basic.activity.FoundationVMActivity
 
 import lib.twl.common.util.AppUtil
 
@@ -71,7 +71,7 @@ import ${provider.applicationName}.R;
 import ${provider.callbackPackageName.value}.${provider.pageName.value}ActivityCallback;
 import ${provider.viewModelPackageName.value}.${provider.pageName.value}ActivityViewModel;
 import ${provider.applicationName}.databinding.${layoutToDataBinding(provider.activityLayoutName.value)}Binding;
-import com.twl.hi.foundation.base.activity.FoundationVMActivity;
+import com.twl.hi.basic.activity.FoundationVMActivity;
 
 import lib.twl.common.util.AppUtil;
 
