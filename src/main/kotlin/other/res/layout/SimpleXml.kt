@@ -4,7 +4,9 @@ import other.MVVMPluginTemplateProviderImpl
 
 fun simpleLayout(provider: MVVMPluginTemplateProviderImpl) = """
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
